@@ -25,12 +25,14 @@ jobs:
         run: npx ng build --configuration production
 
       - name: Add Netlify redirect file
-        run: echo "/* /index.html 200" > dist/my-app/_redirects
+        run: |
+          mkdir -p dist/hello-ci-cd
+          echo "/* /index.html 200" > dist/hello-ci-cd/_redirects
 
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         with:
-          args: deploy --dir=dist/my-app --prod
+          args: deploy --dir=dist/hello-ci-cd --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
