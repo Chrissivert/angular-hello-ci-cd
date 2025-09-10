@@ -26,7 +26,6 @@ jobs:
 
       - name: Add Netlify redirect file
         run: |
-          mkdir -p dist/hello-ci-cd
           echo "/* /index.html 200" > dist/hello-ci-cd/_redirects
 
       - name: Deploy to Netlify
@@ -36,3 +35,4 @@ jobs:
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
