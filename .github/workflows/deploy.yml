@@ -24,6 +24,9 @@ jobs:
       - name: Build Angular project
         run: npx ng build --configuration production
 
+      - name: Add Netlify redirect file
+        run: echo "/* /index.html 200" > dist/my-app/_redirects
+
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         with:
